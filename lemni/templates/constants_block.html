@@ -1,0 +1,19 @@
+{% macro CSS_URL() %}/static/css{% endmacro %}
+{% macro JS_URL() %}/static/js{% endmacro %}
+{% macro GRAPHICS_URL() %}/static/graphics{% endmacro %}
+{% macro WASM_URL() %}/static/wasm{% endmacro %}
+
+{% macro ROUTES() %}
+  {{
+    {
+      'home': '/',
+      'intro': '/intro',
+      'wallet': '/wallet',
+      'node': '/node',
+      'governance': '/governance',
+      'quantum': '/quantum',
+      'security': '/security',
+      'api': '/api'
+    }
+  }}
+{% endmacro %}

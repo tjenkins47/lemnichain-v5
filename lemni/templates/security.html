@@ -1,0 +1,96 @@
+{% import "constants_block.html" as C %}
+<!DOCTYPE html>
+<!-- DEBUG: Rendered by Flask -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Audits – LemniChain</title>
+
+   <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css">
+  <script defer src="{{ C.JS_URL() }}/main.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #222;
+      margin: 0;
+      padding: 80px 10% 40px; /* top padding for fixed navbar */
+    }
+
+    main {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.25rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #333;
+    }
+
+    ul {
+      margin-left: 1.2em;
+    }
+
+    code {
+      background-color: #f2f2f2;
+      padding: 2px 4px;
+      font-family: monospace;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic Bootstrap navbar -->
+  <!-- orig <div id="navbar-placeholder" class="fixed-top"></div> -->
+  {% include "navbar.html" %}
+
+  <main>
+    <h1>Security Assessment & Audits</h1>
+
+    <h2>File System Security</h2>
+    <ul>
+      <li>Permissions: <code>0o600</code> on wallets and keys</li>
+      <li>Atomic writes, cleanup, audit logging</li>
+    </ul>
+
+    <h2>Cryptographic Strength</h2>
+    <ul>
+      <li>AES-256-GCM encryption</li>
+      <li>Quantum-resistant LAIP signature model</li>
+    </ul>
+
+    <h2>Network Defense</h2>
+    <ul>
+      <li>CURVE-encrypted P2P</li>
+      <li>Rate-limited Flask endpoints</li>
+    </ul>
+
+    <p><em>Source:</em>
+        <a href="LemniChain_Security_Analysis.html" target="_self">
+            LemniChain Security Analysis: File Permissions, Cryptographic Security, and Attack Vectors
+        </a>
+    </p>
+
+  </main>
+
+  <!-- Bootstrap JS -->
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Main JS -->
+<!-- <script src="main.js" defer></script> -->
+
+</body>
+</html>

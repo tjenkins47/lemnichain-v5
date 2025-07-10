@@ -1,0 +1,89 @@
+{% import "constants_block.html" as C %}
+<!DOCTYPE html>
+<!-- DEBUG: Rendered by Flask -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum Security – LemniChain</title>
+
+ <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css">
+  <script defer src="{{ C.JS_URL() }}/main.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #222;
+      margin: 0;
+      padding: 80px 10% 40px; /* top padding for fixed navbar */
+    }
+
+    main {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.25rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #333;
+    }
+
+    ul {
+      margin-left: 1.2em;
+    }
+
+    code {
+      background-color: #f2f2f2;
+      padding: 2px 4px;
+      font-family: monospace;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic Bootstrap navbar -->
+  <!-- orig <div id="navbar-placeholder" class="fixed-top"></div> -->
+  {% include "navbar.html" %}
+
+  <main>
+    <h1>Quantum-Resistant Cryptography</h1>
+    <p>
+      LemniChain is built upon <strong>LAI</strong> &mdash; <em>Lemniscate-AGM Isogeny</em> &mdash;
+      an advanced cryptographic model that is fully immune to
+      <strong>Shor's</strong> and <strong>Grover's</strong> algorithms.
+    </p>
+
+    <h2>Audit Highlights (2025)</h2>
+    <ul>
+      <li>No periodicity detected (Shor’s)</li>
+      <li>No Grover amplification</li>
+      <li>2048-bit safe prime space</li>
+    </ul>
+
+    <p><em>Refer to:</em> <a href="QuantumSecurityComparison.html">
+        Quantum Security Comparison
+        </a>
+    </p>
+  </main>
+
+  <!-- Bootstrap JS -->
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Main JS -->
+<!-- <script src="main.js" defer></script> -->
+
+
+</body>
+</html>

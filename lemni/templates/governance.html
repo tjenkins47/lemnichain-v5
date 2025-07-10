@@ -1,0 +1,57 @@
+{% import "constants_block.html" as C %}
+<!DOCTYPE html>
+<!-- DEBUG: Rendered by Flask -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Governance – LemniChain</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css">
+  <script defer src="{{ C.JS_URL() }}/main.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #222;
+      margin: 0;
+      padding: 80px 10% 40px; /* top padding for fixed navbar */
+    }
+
+    main {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic Bootstrap navbar -->
+  <!-- orig <div id="navbar-placeholder" class="fixed-top"></div> -->
+  {% include "navbar.html" %}
+
+  <main>
+    <h1>Governance</h1>
+    <p>On-chain voting and treasury proposal lifecycle.</p>
+  </main>
+
+  <!-- Bootstrap JS -->
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Main JS -->
+<!-- <script src="main.js" defer></script> -->
+
+
+</body>
+</html>
