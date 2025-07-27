@@ -66,9 +66,40 @@
                   <option value="cryptocurrency" selected>cryptocurrency</option>
                 </select>
                 <div id="advancedToggle" class="advanced-toggle mt-3">+ Advanced Options</div>
+                
                 <div id="advancedFields" class="advanced-fields">
-                  <input type="file" id="file_upload" name="file_upload" class="form-control" />
+                    <div class="mb-3">
+                        <label for="further_credit" class="form-label">For Further Credit to the Account of</label>
+                        <input type="text" id="further_credit" name="further_credit" placeholder="Optional: Enter further credit account information" class="form-control">
+                        <div class="field-description">Crediting instructions for parsing this transaction internally at recipient.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="destination_tag" class="form-label">Destination Tag</label>
+                        <input type="text" id="destination_tag" name="destination_tag" placeholder="Optional: Enter destination tag" class="form-control">
+                        <div class="field-description">A numeric tag to identify the recipient's account or purpose.</div>
+                    </div>                        
+                    <div class="mb-3">
+                        <label for="invoice_id" class="form-label">Invoice ID</label>
+                        <input type="text" id="invoice_id" name="invoice_id" placeholder="Optional: Enter invoice ID" class="form-control">
+                        <div class="field-description">A unique identifier to associate with this transaction.</div>
+                    </div>                       
+                    <div class="mb-3">
+                        <label for="memo_data" class="form-label">Transaction Memo</label>
+                        <textarea id="memo_data" name="memo_data" rows="3" placeholder="Optional: Add a note to this transaction" class="form-control"></textarea>
+                        <div class="field-description">A memo that will be permanently stored with this transaction.</div>
+                    </div>
+                    
+                    <div class="mb-3" style="visibility: hidden;" >
+                        <label for="file_upload" class="form-label">Attach File</label>
+                        <input type="file" id="file_upload" name="file_upload" disabled class="form-control">
+                        <div class="file-upload-status" id="file_upload_status"></div>
+                        <div class="field-description">Upload a file to be stored with the transaction.</div>
+                        <input type="hidden" id="blob_hash" name="blob_hash">
+                        <input type="hidden" id="uploaded_filename" name="uploaded_filename">
+                    </div>
                 </div>
+                
+                
                 <button type="submit" class="btn btn-primary mt-3">Send</button>
                 <div id="sendStatus" class="mt-2"></div>
               </form>
