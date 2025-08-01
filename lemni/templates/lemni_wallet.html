@@ -1,123 +1,153 @@
 {% import "constants_block.html" as C %}
 <!DOCTYPE html>
 <html lang="en">
+<!-- DEBUG: Rendered by Flask -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lemni Wallet & Validator</title>
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"><link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('/static/graphics/blue_ocean_background.jpg') center center / cover no-repeat;
+      background-attachment: fixed;
+      color: #222;
+    }
+
+    .wallet-panel {
+      max-width: 60%;
+      margin: 5rem auto;
+      background-color: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    h1 {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .btn-primary {
+      background-color: #004f9f;
+      border-color: #004f9f;
+    }
+
+    .btn-primary:hover {
+      background-color: #003c7d;
+      border-color: #003c7d;
+    }
+
+    .field-description {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .custom-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+  </style>
 </head>
 <body>
+
   {% include "navbar.html" %}
 
-  <main class="container" style="padding-top: 100px;">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
+  <main class="wallet-panel">
+    <h1 class="text-center mb-4">Lemni Wallet & Validator</h1>
+    <p class="text-center text-muted" style="font-size: 0.9em;">Wallet ID: {{ wallet_id }}</p>
 
-        <h1 class="text-center mb-4">Lemni Wallet & Validator</h1>
-        <p class="text-center text-muted" style="font-size: 0.9em;">Wallet ID: {{ wallet_id }}</p>
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="wallet-tab" data-bs-toggle="tab" data-bs-target="#wallet" type="button" role="tab" aria-controls="wallet" aria-selected="true">
+          Wallet
+        </button>
+      </li>
+      {% if is_validator %}
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="validator-tab" data-bs-toggle="tab" data-bs-target="#validator" type="button" role="tab" aria-controls="validator" aria-selected="false">
+          Validator {% if is_current_validator %}⭐{% endif %}
+        </button>
+      </li>
+      {% endif %}
+    </ul>
 
-        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="wallet-tab" data-bs-toggle="tab" data-bs-target="#wallet" type="button" role="tab" aria-controls="wallet" aria-selected="true">
-              Wallet
-            </button>
-          </li>
-          {% if is_validator %}
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="validator-tab" data-bs-toggle="tab" data-bs-target="#validator" type="button" role="tab" aria-controls="validator" aria-selected="false">
-              Validator {% if is_current_validator %}⭐{% endif %}
-            </button>
-          </li>
-          {% endif %}
-        </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
+        
+        <div class="custom-container" id="wallet-overview-container"></div>
 
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="wallet" role="tabpanel" aria-labelledby="wallet-tab">
-            <div class="custom-container px-4 py-3" id="wallet-overview-container"></div>
-
-            <div class="custom-container px-4 py-3">
-              <h2>Stake & Unstake</h2>
-              <form id="stakeForm">
-                {# <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> #}
-                <label for="stake_amount" class="form-label">Amount</label>
-                <input type="number" id="stake_amount" name="amount" min="0.000001" step="0.000001" placeholder="Enter amount to stake/unstake" class="form-control" />
-                {# <div class="small-text">Minimum stake for validation: {{ governance_params.min_stake | default(1.0) }} LEMNI</div> #}
-                <div class="d-flex gap-2 mt-3">
-                  <button type="button" id="stakeButton" class="btn btn-primary">Stake</button>
-                  <button type="button" id="unstakeButton" class="btn btn-primary">Unstake</button>
-                </div>
-                <div id="stakeStatus"></div>
-              </form>
+        <div class="custom-container">
+          <h2>Stake & Unstake</h2>
+          <form id="stakeForm">
+            <label for="stake_amount" class="form-label">Amount</label>
+            <input type="number" id="stake_amount" name="amount" min="0.000001" step="0.000001" placeholder="Enter amount to stake/unstake" class="form-control" />
+            <div class="d-flex gap-2 mt-3">
+              <button type="button" id="stakeButton" class="btn btn-primary">Stake</button>
+              <button type="button" id="unstakeButton" class="btn btn-primary">Unstake</button>
             </div>
-
-            <div class="custom-container px-4 py-3">
-              <h2>Send LEMNI</h2>
-              <form id="sendForm">
-                {# <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> #}
-                <label class="form-label" for="recipient">Recipient</label>
-                <input class="form-control" id="recipient" name="recipient" type="text" required />
-                <label class="form-label" for="amount">Amount</label>
-                <input class="form-control" id="amount" name="amount" type="text" required />
-                <input type="hidden" name="tx_type" value="transfer" />
-                <label for="asset_type" class="form-label">Asset Type</label>
-                <select id="asset_type" name="asset_type" disabled class="form-select">
-                  <option value="cryptocurrency" selected>cryptocurrency</option>
-                </select>
-                <div id="advancedToggle" class="advanced-toggle mt-3">+ Advanced Options</div>
-                
-                <div id="advancedFields" class="advanced-fields">
-                    <div class="mb-3">
-                        <label for="further_credit" class="form-label">For Further Credit to the Account of</label>
-                        <input type="text" id="further_credit" name="further_credit" placeholder="Optional: Enter further credit account information" class="form-control">
-                        <div class="field-description">Crediting instructions for parsing this transaction internally at recipient.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="destination_tag" class="form-label">Destination Tag</label>
-                        <input type="text" id="destination_tag" name="destination_tag" placeholder="Optional: Enter destination tag" class="form-control">
-                        <div class="field-description">A numeric tag to identify the recipient's account or purpose.</div>
-                    </div>                        
-                    <div class="mb-3">
-                        <label for="invoice_id" class="form-label">Invoice ID</label>
-                        <input type="text" id="invoice_id" name="invoice_id" placeholder="Optional: Enter invoice ID" class="form-control">
-                        <div class="field-description">A unique identifier to associate with this transaction.</div>
-                    </div>                       
-                    <div class="mb-3">
-                        <label for="memo_data" class="form-label">Transaction Memo</label>
-                        <textarea id="memo_data" name="memo_data" rows="3" placeholder="Optional: Add a note to this transaction" class="form-control"></textarea>
-                        <div class="field-description">A memo that will be permanently stored with this transaction.</div>
-                    </div>
-                    
-                    <div class="mb-3" style="visibility: hidden;" >
-                        <label for="file_upload" class="form-label">Attach File</label>
-                        <input type="file" id="file_upload" name="file_upload" disabled class="form-control">
-                        <div class="file-upload-status" id="file_upload_status"></div>
-                        <div class="field-description">Upload a file to be stored with the transaction.</div>
-                        <input type="hidden" id="blob_hash" name="blob_hash">
-                        <input type="hidden" id="uploaded_filename" name="uploaded_filename">
-                    </div>
-                </div>
-                
-                
-                <button type="submit" class="btn btn-primary mt-3">Send</button>
-                <div id="sendStatus" class="mt-2"></div>
-              </form>
-            </div>
-
-            <div class="custom-container px-4 py-3" id="transaction-history-container"></div>
-          </div>
-
-          {% if is_validator %}
-          <div class="tab-pane fade" id="validator" role="tabpanel" aria-labelledby="validator-tab">
-            <div class="custom-container px-4 py-3" id="validator-status-container"></div>
-            <div class="custom-container px-4 py-3" id="mempool-container"></div>
-            <div class="custom-container px-4 py-3" id="block-validation-container"></div>
-          </div>
-          {% endif %}
+            <div id="stakeStatus"></div>
+          </form>
         </div>
 
+        <div class="custom-container">
+          <h2>Send LEMNI</h2>
+          <form id="sendForm">
+            <label class="form-label" for="recipient">Recipient</label>
+            <input class="form-control" id="recipient" name="recipient" type="text" required />
+            <label class="form-label" for="amount">Amount</label>
+            <input class="form-control" id="amount" name="amount" type="text" required />
+            <input type="hidden" name="tx_type" value="transfer" />
+            <label for="asset_type" class="form-label">Asset Type</label>
+            <select id="asset_type" name="asset_type" disabled class="form-select">
+              <option value="cryptocurrency" selected>cryptocurrency</option>
+            </select>
+
+            <div id="advancedToggle" class="advanced-toggle mt-3">+ Advanced Options</div>
+
+            <div id="advancedFields" class="advanced-fields">
+              <div class="mb-3">
+                <label for="further_credit" class="form-label">For Further Credit to the Account of</label>
+                <input type="text" id="further_credit" name="further_credit" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="destination_tag" class="form-label">Destination Tag</label>
+                <input type="text" id="destination_tag" name="destination_tag" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="invoice_id" class="form-label">Invoice ID</label>
+                <input type="text" id="invoice_id" name="invoice_id" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="memo_data" class="form-label">Transaction Memo</label>
+                <textarea id="memo_data" name="memo_data" rows="3" class="form-control"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Send</button>
+            <div id="sendStatus" class="mt-2"></div>
+          </form>
+        </div>
+
+        <div class="custom-container" id="transaction-history-container"></div>
       </div>
+
+      {% if is_validator %}
+      <div class="tab-pane fade" id="validator" role="tabpanel" aria-labelledby="validator-tab">
+        <div class="custom-container" id="validator-status-container"></div>
+        <div class="custom-container" id="mempool-container"></div>
+        <div class="custom-container" id="block-validation-container"></div>
+      </div>
+      {% endif %}
     </div>
   </main>
 
@@ -125,5 +155,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script defer src="{{ C.JS_URL() }}/main.js"></script>
 </body>
-
 </html>

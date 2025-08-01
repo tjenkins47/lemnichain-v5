@@ -1,12 +1,12 @@
 {% import "constants_block.html" as C %}
 <!DOCTYPE html>
-<!-- DEBUG: Rendered by Flask -->
 <html lang="en">
+<!-- DEBUG: Rendered by Flask -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wallet – LemniChain</title>
-  
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css">
@@ -15,58 +15,68 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #222;
       margin: 0;
-      padding: 80px 10% 40px; /* Add top padding for navbar */
+      font-family: Arial, sans-serif;
+      background: url('/static/graphics/blue_ocean_background.jpg') center center / cover no-repeat;
+      background-attachment: fixed;
+      color: #222;
     }
-    main {
-      max-width: 850px;
-      margin: auto;
+
+    .wallet-section {
+      width: 90%;
+      margin: 5rem auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
+
     h1 {
       color: #2c3e50;
-      border-bottom: 2px solid #eee;
       padding-bottom: 0.25rem;
     }
+
+    h1 strong {
+      font-weight: bold;
+    }
+
+    h2 {
+      margin-top: 2rem;
+    }
+
     .button-link {
       display: inline-block;
       margin: 1rem 0;
       padding: 0.6rem 1.2rem;
-      background-color: #007bff;
+      background-color: #004f9f;
       color: white;
       text-decoration: none;
       border-radius: 4px;
     }
+
     .button-link:hover {
-      background-color: #0056b3;
+      background-color: #003c7d;
     }
   </style>
 </head>
 <body>
 
-  <!-- Load dynamic Bootstrap navbar -->
-  <!-- orig <div id="navbar-placeholder" class="fixed-top"></div> -->
   {% include "navbar.html" %}
 
   <main>
-    <h1>Wallets</h1>
-    <p>The Lemni wallet allows users to manage LEMNI tokens securely with quantum-resistant infrastructure. You can also run a validator node using this wallet system.</p>
-    <h2>🛠 Create a New Wallet</h2>
-    <p><a href="create_wallet.html" class="button-link">Create Wallet</a></p>
-    <hr>
-    <h2>🧹 Interactive Wallet Dashboard</h2>
-    <p><a href="lemni_wallet.html" class="button-link">Launch Wallet Dashboard</a></p>
+    <div class="wallet-section">
+      <h1><strong>Wallets</strong></h1>
+      <p>The Lemni wallet allows users to manage LEMNI tokens securely with quantum-resistant infrastructure. You can also run a validator node using this wallet system.</p>
+
+      <h2>Create a New Wallet</h2>
+      <p><a href="create_wallet.html" class="button-link">Create Wallet</a></p>
+
+      <h2>Wallet Dashboard</h2>
+      <p><a href="lemni_wallet.html" class="button-link">Launch Wallet Dashboard</a></p>
+    </div>
   </main>
 
-  <!-- Bootstrap JS Bundle -->
-<!-- Bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Main JS -->
-<!-- <script src="/js/bootstrapmain.js" defer></script> -->
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
