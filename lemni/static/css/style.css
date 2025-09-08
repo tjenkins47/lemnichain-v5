@@ -424,3 +424,33 @@ body.dark-theme .wallet-section .text-muted,
 body.dark-theme .wallet-section .lead {
   color: #cfd6dc !important;
 }
+
+/* Wallet page card */
+.wallet-page .wallet-section {
+  width: min(1100px, 92%);
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--lemni-card-bg);
+  border-radius: 12px;
+  box-shadow: var(--lemni-card-shadow);
+}
+
+/* Light theme (default) */
+:root {
+  --lemni-card-bg: #ffffff;
+  --lemni-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+[data-bs-theme="dark"] {
+  --lemni-card-bg: rgba(20, 24, 28, 0.85);  /* subtle translucent card */
+  --lemni-card-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Optional polish, matches your good second screenshot */
+.wallet-page h1 { 
+  font-size: clamp(2rem, 3.5vw, 3rem); 
+  font-weight: 700; 
+  margin-bottom: 1rem;
+}
+.wallet-page p { max-width: 70ch; }
