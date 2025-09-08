@@ -296,4 +296,131 @@ body.dark-theme .navbar .nav-link {
 body.pdf-page main {
   padding-top: 80px;
 }
+.nav-tabs .nav-link.active {
+  color: #0d6efd !important;         /* Bootstrap primary blue */
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 3px solid #0d6efd !important;  /* Blue underline only */
+  font-weight: 600;
+}
 
+/* Fix for missing text color inside <main> in dark mode */
+body.dark-theme main,
+body.dark-theme main p,
+body.dark-theme main a,
+body.dark-theme main li {
+  color: #f2f2f2 !important;
+}
+
+
+main {
+  background: white;
+  color: #222;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+  max-width: 850px;
+  margin: auto;
+}
+
+body.dark-theme main {
+  background-color: #1f1f1f;
+  color: #f2f2f2;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+  border: none;
+}
+
+
+body.dark-theme .wallet-panel,
+body.dark-theme .custom-container {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  color: #f2f2f2 !important;
+}
+
+body.dark-theme .custom-container h2,
+body.dark-theme .custom-container label,
+body.dark-theme .custom-container input,
+body.dark-theme .custom-container textarea,
+body.dark-theme .custom-container select,
+body.dark-theme .custom-container button {
+  color: #f2f2f2 !important;
+  background-color: #222 !important;
+  border-color: #555 !important;
+}
+
+body.dark-theme .wallet-page {
+    background-color: #1f1f1f;
+    color: #f2f2f2;
+}
+
+body.dark-theme .wallet-page h1,
+body.dark-theme .wallet-page h2,
+body.dark-theme .wallet-page p,
+body.dark-theme .wallet-page a {
+    color: #f2f2f2 !important;
+}
+
+body.dark-theme .wallet-page * {
+  color: #f2f2f2 !important;
+  background-color: transparent !important;
+  border-color: #888 !important;
+}
+/* === Wallet page dark-mode hardening === */
+
+/* Ensure the wallet container itself flips to dark */
+body.dark-theme .wallet-page,
+body.dark-theme .custom-container,
+body.dark-theme .wallet-section {
+  background-color: #1f1f1f !important;
+  color: #f2f2f2 !important;
+}
+
+/* Make *all* text inside the wallet section readable */
+body.dark-theme .wallet-section,
+body.dark-theme .wallet-section * {
+  color: #f2f2f2 !important;
+}
+
+/* Buttons & links inside wallet section */
+body.dark-theme .wallet-section a,
+body.dark-theme .wallet-section .button-link,
+body.dark-theme .wallet-section .btn {
+  background-color: #444 !important;
+  color: #fff !important;
+  border-color: #666 !important;
+}
+body.dark-theme .wallet-section a:hover,
+body.dark-theme .wallet-section .button-link:hover,
+body.dark-theme .wallet-section .btn:hover {
+  background-color: #555 !important;
+  color: #fff !important;
+}
+
+/* Inputs, selects, textareas */
+body.dark-theme .wallet-section input,
+body.dark-theme .wallet-section select,
+body.dark-theme .wallet-section textarea {
+  background-color: #222 !important;
+  color: #f2f2f2 !important;
+  border-color: #555 !important;
+}
+
+/* Horizontal rules and subtle dividers */
+body.dark-theme .wallet-section hr,
+body.dark-theme .wallet-section .border,
+body.dark-theme .wallet-section .border-bottom {
+  border-color: #444 !important;
+}
+
+/* Light-mode baseline for wallet section (prevents accidental translucency) */
+.wallet-section {
+  background: #fff;            /* keep light look in light mode */
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0,0,0,.05);
+}
+
+/* If Bootstrap ‘muted’ text is used, make it readable in dark mode */
+body.dark-theme .wallet-section .text-muted,
+body.dark-theme .wallet-section .lead {
+  color: #cfd6dc !important;
+}
