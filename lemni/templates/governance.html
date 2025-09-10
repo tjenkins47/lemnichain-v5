@@ -15,19 +15,24 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #222;
       margin: 0;
-      padding: 80px 10% 40px; /* top padding for fixed navbar */
+      font-family: Arial, sans-serif;
+      background: url('/static/graphics/blue_ocean_background.jpg') center center / cover no-repeat;
+      background-attachment: fixed;
+      color: #222;
     }
 
-    main {
-      max-width: 850px;
-      margin: auto;
+    .center-panel {
+      max-width: 60%;
+      margin: 5rem auto;
+      background-color: rgba(255, 255, 255, 0.9); /* light overlay */
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
     }
 
     h1 {
+      font-weight: bold;
       color: #2c3e50;
       border-bottom: 2px solid #eee;
       padding-bottom: 0.25rem;
@@ -35,23 +40,28 @@
   </style>
 </head>
 <body>
-
-  <!-- Dynamic Bootstrap navbar -->
-  <!-- orig <div id="navbar-placeholder" class="fixed-top"></div> -->
   {% include "navbar.html" %}
 
-  <main>
+  <main class="center-panel">
     <h1>Governance</h1>
     <p>On-chain voting and treasury proposal lifecycle.</p>
+
+    <h2>How It Works</h2>
+    <ul>
+      <li>Community members can submit proposals to improve LemniChain.</li>
+      <li>Token holders vote directly on proposals using their wallet stake.</li>
+      <li>Approved proposals are funded by the on-chain treasury.</li>
+    </ul>
+
+    <h2>Proposal Lifecycle</h2>
+    <ol>
+      <li>Proposal submitted via wallet dashboard</li>
+      <li>Voting period opens</li>
+      <li>Votes counted, quorum verified</li>
+      <li>Approved proposals executed automatically</li>
+    </ol>
   </main>
 
-  <!-- Bootstrap JS -->
-<!-- Bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Main JS -->
-<!-- <script src="main.js" defer></script> -->
-
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
