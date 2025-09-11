@@ -1,0 +1,295 @@
+{% import "constants_block.html" as C %}
+<!DOCTYPE html>
+<!-- DEBUG: Rendered by Flask -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to/FAQ – LemniChain</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css">
+  <script defer src="{{ C.JS_URL() }}/main.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('/static/graphics/blue_ocean_background.jpg') center center / cover no-repeat;
+    background-attachment: fixed;
+    color: #222;
+  }
+
+  .center-panel {
+    max-width: 60%;
+    margin: 5rem auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+
+  body.dark-theme .center-panel {
+    background-color: rgba(34, 34, 34, 0.9);
+    color: #eee;
+  }
+
+  h1 {
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+  body.dark-theme h1 {
+    color: #ddd;
+    border-bottom-color: #444;
+  }
+
+  /* Section headings styled like the uploaded bar */
+  h2 {
+    background-color: #1E5AA8;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+  }
+
+  /* Smooth in-page scrolling and offset so headings aren’t hidden under the fixed navbar */
+  html { scroll-behavior: smooth; }
+  :root { --nav-offset: 100px; }
+  h2[id] { scroll-margin-top: var(--nav-offset); }
+
+  .question {
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  .answer {
+    margin-left: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* TOC container */
+  .toc {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #f9f9f9;
+    padding: 0.5rem 1rem;
+  }
+  .toc a {
+    text-decoration: none;
+    color: #1E5AA8;
+  }
+  .toc a:hover {
+    text-decoration: underline;
+  }
+
+  /* --- Dark theme overrides --- */
+  body.dark-theme .toc {
+    background-color: #1e1e1e !important;
+    border: 1px solid #444 !important;
+    color: #e6f0ff !important;
+  }
+  body.dark-theme .toc a {
+    color: #66b2ff !important;
+    text-decoration: none !important;
+  }
+  body.dark-theme .toc a:hover {
+    color: #99ccff !important;
+    text-decoration: underline !important;
+  }
+  body.dark-theme .toc small,
+  body.dark-theme .toc b {
+    color: #e6f0ff !important;
+  
+    .back-to-top {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #1E5AA8;
+      text-decoration: none;
+    }
+    .back-to-top:hover {
+      text-decoration: underline;
+      color: #004f9f;
+    }
+    body.dark-theme .back-to-top {
+      color: #66b2ff;
+    }
+    body.dark-theme .back-to-top:hover {
+      color: #99ccff;
+    }
+
+</style>
+
+
+</head>
+<body>
+  {% include "navbar.html" %}
+
+  <main class="center-panel">
+    <a id="top"></a>
+    <h1>How to / FAQ</h1>
+    
+  <!-- Minimal TOC -->
+  <nav class="toc mb-4">
+    <small><b>Help for:</b></small>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#general">General</a></li>
+      <li class="list-inline-item"><a href="#wallet">Wallet</a></li>
+      <li class="list-inline-item"><a href="#buying">Buying & Selling</a></li>
+      <li class="list-inline-item"><a href="#money">Moving Money</a></li>
+      <li class="list-inline-item"><a href="#staking">Staking</a></li>
+      <li class="list-inline-item"><a href="#validator">Validator</a></li>
+      <li class="list-inline-item"><a href="#governance">Governance</a></li>
+      <li class="list-inline-item"><a href="#security">Security</a></li>
+    </ul>
+  </nav>
+
+    <!-- General Site Questions -->
+    <h2 id="general">🌐 General Site Questions</h2>
+    <p class="question">Q: How do I get started with LemniCoin?</p>
+    <p class="answer">A: Start by creating a wallet on the <b>Create Wallet</b> page. Once you have a wallet, you can receive LEMNI, send it to others, or stake it to participate in LemniChain.</p>
+
+    <p class="question">Q: Where do I create a wallet?</p>
+    <p class="answer">A: Click on <b>Create Wallet</b> from the main site menu. Fill out the short form, and your new wallet will be generated instantly.</p>
+
+    <p class="question">Q: Do I need to download anything, or is everything in the browser?</p>
+    <p class="answer">A: No download is required. Everything works directly in your web browser.</p>
+
+    <p class="question">Q: How do I log back into my wallet later?</p>
+    <p class="answer">A: Use your <b>Wallet ID</b> (provided when you created your wallet) to access it again.</p>
+
+    <p class="question">Q: Can I use this site on my phone?</p>
+    <p class="answer">A: Yes. The wallet pages are mobile-friendly.</p>
+    <p><a href="#top" class="back-to-top">↑ Back to top</a></p>
+    
+    <!-- Wallet Basics -->
+    <h2 id="wallet">💼 Wallet Basics</h2>
+    <p class="question">Q: What is a wallet ID?</p>
+    <p class="answer">A: Your wallet ID is a unique string of characters that identifies your wallet on LemniChain.</p>
+
+    <p class="question">Q: How do I make a new wallet?</p>
+    <p class="answer">A: Go to the <b>Create Wallet</b> page, enter a memo if you want (like a note for yourself), and click <b>Create Wallet</b>.</p>
+
+    <p class="question">Q: How do I see my balance?</p>
+    <p class="answer">A: Your wallet shows both <b>confirmed balance</b> and <b>projected balance</b> on the main page.</p>
+
+    <p class="question">Q: What is “confirmed balance” vs. “projected balance”?</p>
+    <p class="answer">A: Confirmed balance is money that’s final and ready to use. Projected balance includes pending transactions (like transfers or staking) that aren’t fully confirmed yet.</p>
+
+    <p class="question">Q: What’s the difference between my balance and my staked amount?</p>
+    <p class="answer">A: Balance is what you can send or use. Staked amount is what you’ve locked to help secure LemniChain (and to earn rewards).</p>
+
+    <p class="question">Q: What if I forget my wallet password or memo?</p>
+    <p class="answer">A: For security reasons, forgotten keys or passwords cannot be recovered. Always back up your wallet details safely.</p>
+    <p><a href="#top" class="back-to-top">↑ Back to top</a></p>
+    
+    <!-- Buying & Selling -->
+    <h2 id="buying">💱 Buying & Selling</h2>
+    <p class="question">Q: How can I buy LemniCoin (LEMNI)?</p>
+    <p class="answer">A: LemniCoin will be available through supported exchanges. Once listed, you’ll be able to purchase LEMNI with other cryptocurrencies or fiat currency, depending on the exchange. After buying, you can transfer your LEMNI into your LemniChain wallet for safekeeping.</p>
+
+    <p class="question">Q: How can I sell LemniCoin (LEMNI)?</p>
+    <p class="answer">A: To sell, you’ll transfer your LEMNI from your wallet back to a supported exchange and trade it for another cryptocurrency or fiat. The exchange will then let you withdraw the proceeds.</p>
+
+    <p class="question">Q: Can I buy or sell directly inside the LemniChain wallet?</p>
+    <p class="answer">A: No. The wallet is for holding, sending, staking, and validating. Buying and selling happens through exchanges.</p>
+
+    <p class="question">Q: How do I know which exchanges support LemniCoin?</p>
+    <p class="answer">A: Official announcements will list supported exchanges once trading goes live. Always use trusted, reputable exchanges.</p>
+    <p><a href="#top" class="back-to-top">↑ Back to top</a></p>
+    
+    <!-- Moving Money -->
+    <h2 id="money">💸 Moving Money</h2>
+    <p class="question">Q: How do I send LEMNI to someone?</p>
+    <p class="answer">A: In your wallet, go to the <b>Send LEMNI</b> section, enter the recipient’s Wallet ID and the amount, then click <b>Send</b>.</p>
+
+    <p class="question">Q: How do I receive LEMNI from someone else?</p>
+    <p class="answer">A: Give them your <b>Wallet ID</b>. Any LEMNI they send will show up in your transaction history.</p>
+
+    <p class="question">Q: What is a “destination tag” and do I need one?</p>
+    <p class="answer">A: It’s an optional number used to identify the purpose of a transfer. Most transfers don’t need it.</p>
+
+    <p class="question">Q: What’s an “invoice ID”?</p>
+    <p class="answer">A: An optional unique identifier you can attach to a transaction, useful for tracking payments.</p>
+
+    <p class="question">Q: Can I add a note or memo to my transaction?</p>
+    <p class="answer">A: Yes. Use the <b>Transaction Memo</b> field to add a permanent note to your transfer.</p>
+
+    <p class="question">Q: How do I see my past transactions?</p>
+    <p class="answer">A: Scroll down to the <b>Transaction History</b> section in your wallet.</p>
+    <p><a href="#top" class="back-to-top">↑ Back to top</a></p>
+    
+    <!-- Staking -->
+    <h2 id="staking">📈 Staking</h2>
+    <p class="question">Q: How do I stake my LEMNI?</p>
+    <p class="answer">A: In the <b>Stake & Unstake</b> section, enter the amount and click <b>Stake</b>.</p>
+
+    <p class="question">Q: How do I unstake my LEMNI?</p>
+    <p class="answer">A: Enter the amount in the same form and click <b>Unstake</b>.</p>
+
+    <p class="question">Q: What happens if I unstake everything?</p>
+    <p class="answer">A: Your validator status will be disabled until you stake again.</p>
+
+    <p class="question">Q: What’s the minimum amount I need to stake to be a validator?</p>
+    <p class="answer">A: The minimum is shown in your wallet under <b>Stake & Unstake</b>.</p>
+    <p><a href="#top" class="back-to-top">↑ Back to top</a></p>
+    
+    <!-- Validator Role -->
+    <h2 id="validator">⭐ Validator Role</h2>
+    <p class="question">Q: How do I become a validator?</p>
+    <p class="answer">A: Stake at least the minimum required LEMNI. Once staked, you’ll be eligible to validate blocks.</p>
+
+    <p class="question">Q: What does “currently active validator” mean?</p>
+    <p class="answer">A: It means it’s your turn to validate the next block.</p>
+
+    <p class="question">Q: How do I verify a block?</p>
+    <p class="answer">A: When it’s your turn, click <b>Verify Block</b> in the Validator tab.</p>
+
+    <p class="question">Q: What is “auto-validate”?</p>
+    <p class="answer">A: Auto-validate lets your wallet automatically approve blocks when it’s your turn.</p>
+
+    <p class="question">Q: What’s the mempool?</p>
+    <p class="answer">A: The mempool is a holding area for all pending transactions waiting to be included in the next block.</p>
+
+    <p class="question">Q: What happens if I miss my turn to validate a block?</p>
+    <p class="answer">A: The next validator in line will take over, and you may lose potential rewards.</p>
+    <p><a href="#top" class="back-to-top">↑ Back to top</a></p>
+    
+    <!-- Governance -->
+    <h2 id="governance">🗳 Governance</h2>
+    <p class="question">Q: How do I vote on proposals?</p>
+    <p class="answer">A: In the Validator tab, you’ll see <b>Active Proposals</b>. Enter your vote and submit.</p>
+
+    <p class="question">Q: How do I submit a new proposal?</p>
+    <p class="answer">A: Click <b>+ New Proposal</b>, fill in the parameter and value you want to change, and submit.</p>
+
+    <p class="question">Q: Where can I see the current rules/parameters?</p>
+    <p class="answer">A: They’re listed under <b>Current Parameters</b> in the Governance section.</p>
+    <p><a href="#top" class="back-to-top">↑ Back to top</a></p>
+    
+    <!-- Security -->
+    <h2 id="security">🔒 Security</h2>
+    <p class="question">Q: Is my wallet quantum-safe?</p>
+    <p class="answer">A: Yes. LemniCoin uses Lemniscate-AGM Isogeny (LAI) cryptography, which is resistant to quantum computer attacks.</p>
+
+    <p class="question">Q: What happens if my computer crashes—will I lose my wallet?</p>
+    <p class="answer">A: Not if you backed up your wallet ID and keys. Always store them securely.</p>
+
+    <p class="question">Q: Can someone hack into my wallet?</p>
+    <p class="answer">A: LemniChain uses strong encryption, secure file permissions, and advanced protections. As long as you keep your wallet details private, your funds are safe.</p>
+
+    <p class="question">Q: Is LemniChain more secure than Bitcoin or Ethereum?</p>
+    <p class="answer">A: Yes. LemniChain is designed to be fully quantum-resistant, while Bitcoin and Ethereum still rely on cryptography that quantum computers could break in the future.</p>
+    <p><a href="#top" class="back-to-top">↑ Back to top</a></p>
+    </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
