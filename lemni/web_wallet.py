@@ -82,6 +82,11 @@ def lemnichain_security():
 def quantum_security():
     return render_template("QuantumSecurityComparison.html")
     
+@app.route("/help")
+def help_page():
+    return render_template("help.html")
+
+    
 
 # === In-Memory Wallet Store (Mock) ===
 wallets = {}
