@@ -61,6 +61,11 @@ def node():
 @app.route('/governance')
 def governance():
     return render_template("governance.html")
+    
+@app.route("/team")
+def team():
+    return render_template("team.html")
+
 
 @app.route('/quantum')
 def quantum():
