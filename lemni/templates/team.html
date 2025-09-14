@@ -9,6 +9,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <!-- Bootstrap Icons (needed for light/dark toggle) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css" />
   <script defer src="{{ C.JS_URL() }}/main.js"></script>
@@ -22,17 +23,17 @@
       color: #222;
     }
 
-    /* Floating central panel */
     .team-panel {
       max-width: 60%;
       margin: 5rem auto;
       background-color: rgba(255, 255, 255, 0.92);
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
+      padding: 6rem 8rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Dark mode override */
     body.dark-mode .team-panel {
       background-color: rgba(34, 34, 34, 0.9);
       color: #eee;
@@ -43,10 +44,57 @@
       color: #2c3e50;
       border-bottom: 2px solid #eee;
       padding-bottom: 0.25rem;
+      margin: 0 0 1.5rem 0;
     }
-    body.dark-mode h1 {
-      color: #ddd;
-      border-bottom-color: #444;
+    body.dark-mode h1 { color: #ddd; border-bottom-color: #444; }
+
+    .team-member {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      grid-template-areas:
+        "photo header"
+        "body  body";
+      column-gap: 1.25rem;
+      margin-bottom: 3rem;
+      align-items: end;
+    }
+    .member-photo   { grid-area: photo; }
+    .member-header  { grid-area: header; }
+    .member-body    { grid-area: body; }
+
+    .member-photo img {
+      width: 160px;
+      height: 220px; /* consistent height */
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .member-header h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+    .member-header .title {
+      margin: 0.25rem 0 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #444;
+    }
+    body.dark-mode .member-header .title { color: #ccc; }
+
+    .member-body p { margin: .75rem 0 0; }
+
+    @media (max-width: 768px) {
+      .team-panel { max-width: 90%; padding: 3rem; }
+      .team-member {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "photo"
+          "header"
+          "body";
+        align-items: start;
+      }
+      .member-photo img { width: 140px; height: auto; }
     }
   </style>
 </head>
@@ -54,28 +102,108 @@
   {% include "navbar.html" %}
 
   <main class="team-panel">
-    <h1>Our Team</h1>
+    <h1 class="text-center">Our Team</h1>
 
-    <p><strong>Ralph Vince, Lead Developer and Visionary</strong><br>
-    Ralph Vince is a Charles H. Dow Award winner. He has worked for fund managers, sovereign wealth funds and family offices around the world since the early 1980s. He was Larry Williams' programmer and trader during Williams' 1987 legendary championship run where he traded $10,000 to over $1,100,000 in a 12-month competition. He has served on the Board of Directors of the Market Technician's Association of New York, and has written numerous books published by John Wiley & Sons as well as professional papers on financial as well as general mathematics and statistics. 
-    <br><br>
-    He was one of the early pioneers of 3-dimensional CAD systems, natural language processing systems, and was an integral part of the team that created the original Reinberger Hall of Earth & Planetary Exploration at The Cleveland Museum of Natural History.
-    <br><br>
-    He has worked as a Portfolio Manager at the Abu Dhabi Investment Authority, and is regarded as a recognized authority on position sizing in trading. His allocation algorithms have been licensed by Dow Jones Indexes. He has been invited to give colloquiums on his ideas at such esteemed institutions as the Massachusetts Institute of Technology, The London Chamber of Commerce, and delivered papers at the World Finance Conference, to name a few. Ralph Vince's books and peer-reviewed academic papers on mathematics - often co-authored with the top minds in the field of mathematics - appear in such publications as Mathematics, as well as The Journal of Investment Strategies and The Far East Journal of Theoretical Statistics. His academic writings are among the top 1/2 of 1% of the most read research of all academic writings across all disciplines.
-    <br><br>
-    Among his most notable and heterodox academic contributions is a means of cryptography spawned by the modular nature of the lemniscate (infinity symbol ∞ ) that is impervious to quantum computer attacks and serves as the basis of a proposed blockchain, wallet, and cryptocurrency, the "Lemnicoin Ecosystem."</p>
+    <!-- Ralph Vince -->
+    <section class="team-member">
+      <div class="member-photo">
+        <img src="{{ url_for('static', filename='graphics/Ralph_Vince.jpg') }}" alt="Ralph Vince">
+      </div>
+      <header class="member-header">
+        <h2>Ralph Vince</h2>
+        <div class="title">Lead Developer and Visionary</div>
+      </header>
+      <div class="member-body">
+        <p>
+          Ralph Vince is a Charles H. Dow Award winner. He has worked for fund managers, sovereign wealth funds and family offices around the world since the early 1980s. He was Larry Williams' programmer and trader during Williams' 1987 legendary championship run where he traded $10,000 to over $1,100,000 in a 12-month competition. He has served on the Board of Directors of the Market Technician's Association of New York, and has written numerous books published by John Wiley & Sons as well as professional papers on financial as well as general mathematics and statistics.
+        </p>
+        <p>
+          He was one of the early pioneers of 3-dimensional CAD systems, natural language processing systems, and was an integral part of the team that created the original Reinberger Hall of Earth & Planetary Exploration at The Cleveland Museum of Natural History.
+        </p>
+        <p>
+          He has worked as a Portfolio Manager at the Abu Dhabi Investment Authority, and is regarded as a recognized authority on position sizing in trading. His allocation algorithms have been licensed by Dow Jones Indexes. He has been invited to give colloquiums on his ideas at such esteemed institutions as the Massachusetts Institute of Technology, The London Chamber of Commerce, and delivered papers at the World Finance Conference, to name a few.
+        </p>
+        <p>
+          Ralph Vince's books and peer-reviewed academic papers on mathematics – often co-authored with the top minds in the field – appear in such publications as <em>Mathematics</em>, <em>The Journal of Investment Strategies</em>, and <em>The Far East Journal of Theoretical Statistics</em>. His academic writings are among the top 0.5% of the most read research of all academic writings across all disciplines.
+        </p>
+        <p>
+          Among his most notable contributions is a means of cryptography spawned by the modular nature of the lemniscate (∞) that is impervious to quantum computer attacks and serves as the basis of the LemniCoin ecosystem.
+        </p>
+      </div>
+    </section>
 
-    <p><strong>Grant Wilkie – Senior Developer</strong><br>
-    Grant leads LemniChain’s server-side development. With broad expertise across multiple programming languages, he has been instrumental in creating the Python-to-WebAssembly module that enables secure, in-browser key generation and execution of blockchain functions. Grant’s contributions extend beyond code: he ensures the quantum-resistant cryptographic foundation of LemniChain integrates smoothly with modern web frameworks, and he has worked extensively on the Flask back-end, security protocols, and validator tools that power the platform. His focus on performance, scalability, and cryptographic integrity helps guarantee LemniChain’s technical edge in the post-quantum era.</p>
+    <!-- Grant Wilkie -->
+    <section class="team-member">
+      <div class="member-photo">
+        <img src="{{ url_for('static', filename='graphics/Grant_Wilkie.jpg') }}" alt="Grant Wilkie">
+      </div>
+      <header class="member-header">
+        <h2>Grant Wilkie</h2>
+        <div class="title">Senior Developer</div>
+      </header>
+      <div class="member-body">
+        <p>
+          Grant leads LemniChain’s server-side development. With broad expertise across multiple programming languages, he has been instrumental in creating the Python-to-WebAssembly module that enables secure, in-browser key generation and execution of blockchain functions. Grant’s contributions extend beyond code: he ensures the quantum-resistant cryptographic foundation of LemniChain integrates smoothly with modern web frameworks, and he has worked extensively on the Flask back-end, security protocols, and validator tools that power the platform. His focus on performance, scalability, and cryptographic integrity helps guarantee LemniChain’s technical edge in the post-quantum era.
+        </p>
+      </div>
+    </section>
 
-    <p><strong>Tom Jenkins – Senior Designer and Developer</strong><br>
-    With more than 45 years of combined creative and technical experience, Tom bridges the worlds of design and development. His award-winning graphic sensibilities have elevated the image of companies in industries ranging from retail to real estate to health care. On the technical side, Tom specializes in web and database applications that prioritize the end-user experience, creating interfaces that are both intuitive and imaginative. Within LemniChain, Tom shapes the project’s visual identity, documentation site, and user-friendly wallet experience, ensuring the technology is as approachable as it is powerful.</p>
+    <!-- Tom Jenkins -->
+    <section class="team-member">
+      <div class="member-photo">
+        <img src="{{ url_for('static', filename='graphics/Tom_Jenkins.jpg') }}" alt="Tom Jenkins">
+      </div>
+      <header class="member-header">
+        <h2>Tom Jenkins</h2>
+        <div class="title">Senior Designer and Developer</div>
+      </header>
+      <div class="member-body">
+        <p>
+          With more than 45 years of combined creative and technical experience, Tom bridges the worlds of design and development. His award-winning graphic sensibilities have elevated the image of companies in industries ranging from retail to real estate to health care. On the technical side, Tom specializes in web and database applications that prioritize the end-user experience, creating interfaces that are both intuitive and imaginative. Within LemniChain, Tom shapes the project’s visual identity, documentation site, and user-friendly wallet experience, ensuring the technology is as approachable as it is powerful.
+        </p>
+      </div>
+    </section>
 
-    <p><strong>Diego Navarro – Marketing Manager</strong><br>
-    Diego brings a dynamic blend of social media marketing, front-end development, and multi-lingual communication skills to LemniChain. With hands-on experience in JavaScript and web technologies, he understands how to communicate technical concepts to diverse audiences. Diego manages LemniChain’s outreach efforts, building community engagement and ensuring that the project’s voice resonates across global platforms. His ability to operate at the intersection of marketing and technology makes him a valuable bridge between developers and users.</p>
+    <!-- Diego Navarro -->
+    <section class="team-member">
+      <div class="member-photo">
+        <img src="{{ url_for('static', filename='graphics/Diego_Navarro.jpg') }}" alt="Diego Navarro Meffre">
+      </div>
+      <header class="member-header">
+        <h2>Diego Navarro Meffre</h2>
+        <div class="title">Marketing Manager</div>
+      </header>
+      <div class="member-body">
+        <p>
+          Diego Navarro Meffre is a multilingual business professional with extensive experience in marketing,
+          hospitality, and international trade, fluent in English, French, and Spanish. Diego holds a Master’s in
+          International Trade from Escuela de Negocios Europea de Barcelona, a Bachelor’s in Management and
+          Marketing and recently completed a Master’s in Applied Foreign Languages with a focus on webmarketing
+          and e-commerce operations. His professional background spans key roles in marketing strategy,
+          hospitality management, and military leadership, including service as a non-commissioned officer,
+          military English instructor, and interpreter in international missions. Diego is recognized for his strong
+          project management, negotiation, and digital communication skills, making him a valuable asset in
+          multilingual and multicultural business environments.
+        </p>
+      </div>
+    </section>
 
-    <p><strong>Lillia – Public Relations Manager</strong><br>
-    Lillia oversees LemniChain’s public relations and administrative coordination, bringing strong organizational skills and a gift for communication. Fluent in multiple languages, she helps ensure LemniChain’s message reaches an international audience with clarity and professionalism. Her role emphasizes transparency, trust, and accessibility, strengthening LemniChain’s reputation as a community-driven project open to all.</p>
+    <!-- Lillia -->
+    <section class="team-member">
+      <div class="member-photo">
+        <img src="{{ url_for('static', filename='graphics/Lillia.jpg') }}" alt="Lillia">
+      </div>
+      <header class="member-header">
+        <h2>Lillia</h2>
+        <div class="title">Public Relations Manager</div>
+      </header>
+      <div class="member-body">
+        <p>
+          Lillia oversees LemniChain’s public relations and administrative coordination, bringing strong organizational skills and a gift for communication. Fluent in multiple languages, she helps ensure LemniChain’s message reaches an international audience with clarity and professionalism. Her role emphasizes transparency, trust, and accessibility, strengthening LemniChain’s reputation as a community-driven project open to all.
+        </p>
+      </div>
+    </section>
+
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
