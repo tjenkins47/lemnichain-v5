@@ -14,39 +14,56 @@
   <div class="collapse navbar-collapse" id="navbarMain">
     <ul class="navbar-nav me-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{{ ROUTES.home }}">Home</a>
+        <a class="nav-link" id="nav-home" href="{{ ROUTES.home }}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ ROUTES.intro }}">Intro</a>
+        <a class="nav-link" id="nav-intro" href="{{ ROUTES.intro }}">Intro</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ ROUTES.wallet }}">Wallet</a>
+        <a class="nav-link" id="nav-wallet" href="{{ ROUTES.wallet }}">Wallet</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="buildMenu" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="nav-build" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
           Build
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="buildMenu">
-          <li><a class="dropdown-item" href="{{ ROUTES.node }}">Node</a></li>
-          <li><a class="dropdown-item" href="{{ ROUTES.governance }}">Governance</a></li>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nav-build">
+          <li><a class="dropdown-item" id="nav-node" href="{{ ROUTES.node }}">Node</a></li>
+          <li><a class="dropdown-item" id="nav-governance" href="{{ ROUTES.governance }}">Governance</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="researchMenu" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="nav-research" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">
           Research
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="researchMenu">
-          <li><a class="dropdown-item" href="/team">Our Team</a></li>
-          <li><a class="dropdown-item" href="{{ ROUTES.quantum }}">Quantum Security</a></li>
-          <li><a class="dropdown-item" href="{{ ROUTES.security }}">Security Audits</a></li>
-          <li><a class="dropdown-item" href="{{ ROUTES.api }}">API Reference</a></li>
-          <!-- NEW: final item in Research -->
-          <li><a class="dropdown-item" href="/help">How to/FAQ</a></li>
-
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nav-research">
+          <li><a class="dropdown-item" id="nav-team" href="/team">Our Team</a></li>
+          <li><a class="dropdown-item" id="nav-quantum" href="{{ ROUTES.quantum }}">Quantum Security</a></li>
+          <li><a class="dropdown-item" id="nav-security" href="{{ ROUTES.security }}">Security Audits</a></li>
+          <li><a class="dropdown-item" id="nav-api" href="{{ ROUTES.api }}">API Reference</a></li>
+          <li><a class="dropdown-item" id="nav-help" href="/help">How to/FAQ</a></li>
         </ul>
       </li>
     </ul>
-    <div class="d-flex ms-auto">
+
+    <!-- Language Label + Toggle -->
+    <ul class="navbar-nav me-2">
+      <li class="nav-item">
+        <span class="nav-link" id="langLabel">Languages</span>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          EN
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="langToggle">
+          <li><a class="dropdown-item lang-option" href="#" data-lang="EN">EN</a></li>
+          <li><a class="dropdown-item lang-option" href="#" data-lang="FR">FR</a></li>
+          <li><a class="dropdown-item lang-option" href="#" data-lang="ES">ES</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Light/Dark Toggle -->
+    <div class="d-flex">
       <button id="theme-toggle" class="btn btn-sm btn-outline-light" title="Toggle dark mode" style="border: none;">
         <i class="bi bi-moon-fill" id="theme-icon"></i>
       </button>
