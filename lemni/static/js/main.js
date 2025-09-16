@@ -47,53 +47,65 @@ function initLangToggle() {
   const savedLang = localStorage.getItem("selectedLang") || "EN";
   langButton.textContent = savedLang;
 
-  const translations = {
-    EN: {
-      home: "Home",
-      intro: "Intro", wallet: "Wallet", build: "Build", node: "Node",
-      governance: "Governance", research: "Research", team: "Our Team",
-      quantum: "Quantum Security", security: "Security Audits",
-      api: "API Reference", help: "How to/FAQ",
-      langLabel: "Languages"
-    },
-    FR: {
-      home: "Accueil",
-      intro: "Introduction", wallet: "Portefeuille", build: "Construire", node: "Nœud",
-      governance: "Gouvernance", research: "Recherche", team: "Notre Équipe",
-      quantum: "Sécurité Quantique", security: "Audits de Sécurité",
-      api: "Référence API", help: "Aide / FAQ",
-      langLabel: "Langues"
-    },
-    ES: {
-      home: "Inicio",
-      intro: "Introducción", wallet: "Billetera", build: "Construir", node: "Nodo",
-      governance: "Gobernanza", research: "Investigación", team: "Nuestro Equipo",
-      quantum: "Seguridad Cuántica", security: "Auditorías de Seguridad",
-      api: "Referencia API", help: "Cómo hacer / FAQ",
-      langLabel: "Idiomas"
-    }
-  };
+ const translations = {
+  EN: {
+    home: "Home",
+    intro: "Introduction", wallet: "Wallet", build: "Development", node: "Node",
+    governance: "Governance", research: "Research", team: "Our Team",
+    quantum: "Quantum Security", security: "Security Audits",
+    api: "API Reference", help: "How to / FAQ / Guide",
+    langLabel: "Languages"
+  },
+  FR: {
+    home: "Accueil",
+    intro: "Présentation", wallet: "Portefeuille", build: "Développement", node: "Nœud",
+    governance: "Gouvernance", research: "Recherche", team: "Notre Équipe",
+    quantum: "Sécurité Quantique", security: "Audits de Sécurité",
+    api: "Référence de l’API", help: "Guide / Foire aux Questions",
+    langLabel: "Langues"
+  },
+  ES: {
+    home: "Inicio",
+    intro: "Presentación", wallet: "Monedero digital", build: "Desarrollo", node: "Nodo",
+    governance: "Gobernanza", research: "Investigación", team: "Nuestro Equipo",
+    quantum: "Seguridad Cuántica", security: "Auditorías de Seguridad",
+    api: "Referencia de la API", help: "Guía / Preguntas Frecuentes",
+    langLabel: "Idiomas"
+  }
+};
 
-  function updateNavbarLanguage(lang) {
-    const dict = translations[lang];
 
-    if (document.getElementById("nav-home"))
-      document.getElementById("nav-home").textContent = dict.home;
+ function updateNavbarLanguage(lang) {
+  const dict = translations[lang];
+
+  if (document.getElementById("nav-home"))
+    document.getElementById("nav-home").textContent = dict.home;
+  if (document.getElementById("nav-intro"))
     document.getElementById("nav-intro").textContent = dict.intro;
+  if (document.getElementById("nav-wallet"))
     document.getElementById("nav-wallet").textContent = dict.wallet;
-    document.getElementById("nav-build").textContent = dict.build;
+  if (document.getElementById("nav-node"))
     document.getElementById("nav-node").textContent = dict.node;
+  if (document.getElementById("nav-governance"))
     document.getElementById("nav-governance").textContent = dict.governance;
+  if (document.getElementById("nav-research"))
     document.getElementById("nav-research").textContent = dict.research;
+  if (document.getElementById("nav-team"))
     document.getElementById("nav-team").textContent = dict.team;
+  if (document.getElementById("nav-quantum"))
     document.getElementById("nav-quantum").textContent = dict.quantum;
+  if (document.getElementById("nav-security"))
     document.getElementById("nav-security").textContent = dict.security;
+  if (document.getElementById("nav-api"))
     document.getElementById("nav-api").textContent = dict.api;
+  if (document.getElementById("nav-help"))
     document.getElementById("nav-help").textContent = dict.help;
 
-    // 🔑 update the label
-    langLabel.textContent = dict.langLabel;
-  }
+  // 🔑 update the language label
+  if (document.getElementById("langLabel"))
+    document.getElementById("langLabel").textContent = dict.langLabel;
+}
+
 
   // Apply saved language immediately
   updateNavbarLanguage(savedLang);
