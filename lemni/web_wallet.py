@@ -18,15 +18,15 @@ def inject_globals():
         "STATIC_URL": url_for('static', filename=''),
         "ROUTES": {
             'home': url_for('homepage'),
-            'intro': '/intro',
+            'about': '/about',
+            'intro': '/intro',       # used for Security
+            'scarcity': '/scarcity',
             'wallet': '/wallet',
-            'node': '/node',
-            'governance': '/governance',
-            'quantum': '/quantum',
-            'security': '/security',
-            'api': '/api'
+            'team': '/team',
+            'help': '/help'
         }
     }
+
 
 # === Static Home Page ===
 @app.route('/')
@@ -54,22 +54,19 @@ def create_wallet():
 def lemni_wallet():
     return render_template("lemni_wallet.html")
 
-@app.route('/node')
-def node():
-    return render_template("node.html")
+@app.route('/about')
+def about():
+    return render_template("about.html")
 
-@app.route('/governance')
-def governance():
-    return render_template("governance.html")
+@app.route('/scarcity')
+def scarcity():
+    return render_template("scarcity.html")
+
     
 @app.route("/team")
 def team():
     return render_template("team.html")
 
-
-@app.route('/quantum')
-def quantum():
-    return render_template("quantum.html")
 
 @app.route('/security')
 def security():
