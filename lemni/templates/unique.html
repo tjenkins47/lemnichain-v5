@@ -29,7 +29,7 @@
       background-color: rgba(255, 255, 255, 0.92);
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      padding: 6rem 8rem; /* More margin on sides */
+      padding: 6rem 8rem;
       position: relative;
       z-index: 1;
     }
@@ -88,11 +88,12 @@
     <p>This is the key innovation of the QA-LOS paper. You wouldn't call it "NP proof" because NP is a massive class containing many easy problems. Instead, you describe it by its security foundation.</p>
     <p>The correct term, which the paper itself uses, is that QA-LOS is based on Distributional Hardness or Sampling Hardness.</p>
     <ul>
-      <li><strong>Old Paradigm (Broken by Quantum):</strong> Algebraic One-Wayness. Security relies on the computational difficulty of inverting a function.</li>
-      <li><strong>New Paradigm (QA-LOS):</strong> Distributional Indistinguishability. Security relies on the computational difficulty of distinguishing between two probability distributions.</li>
+      <li><strong>Old Paradigm (Broken by Quantum):</strong> Algebraic One-Wayness. Security relies on the computational difficulty of inverting a function (e.g., "Given c = mᵉ mod n, find m").</li>
+      <li><strong>New Paradigm (QA-LOS):</strong> Distributional Indistinguishability. Security relies on the computational difficulty of distinguishing between two probability distributions. The "hard" problem is: "Can you tell if these output samples came from the complex LOS process or from a simple random number generator?"</li>
     </ul>
 
     <h2>4. How to refer to a system being invulnerable to these attacks?</h2>
+    <p>You would say the system is immune to attacks based on algebraic inversion or that its security is not based on the one-way function paradigm.</p>
     <blockquote class="blockquote">
       <em>Unlike traditional cryptography whose security is based on the one-wayness of algebraic functions vulnerable to Shor's algorithm, the QA-LOS framework derives its security from a Distributional Hardness Conjecture (DHC). Its security relies on the computational infeasibility of distinguishing its lemniscate-orbit sampling output from a uniform random distribution, a problem not known to be susceptible to quantum or classical algebraic attacks.</em>
     </blockquote>
@@ -126,21 +127,40 @@
         </tbody>
       </table>
     </div>
+    <p>There is a shift in thinking from "solving" to "sampling" as the new foundation for quantum-era cryptography, and QA-LOS is a concrete proposal building on this very idea.</p>
 
     <h2>Analogy</h2>
-    <p><strong>Lattice/Crypto (Kyber, etc.):</strong> "We've replaced the old, pickable lock (RSA) with a new, more complex brand of lock that quantum lock-picks can't open... yet."</p>
+    <p><strong>Lattice/Crypto (Kyber, etc.):</strong> "We've replaced the old, pickable lock (RSA) with a new, more complex brand of lock that quantum lock-picks can't open... yet. But it's still a lock that operates on the same principle of inversion."</p>
     <p><strong>QA-LOS:</strong> "We've thrown away the entire concept of a lock and key. Instead, security is now based on the inability to tell a real priceless diamond from a perfect synthetic replica. The attack vector (picking the lock) no longer exists."</p>
 
     <h2>Conclusion</h2>
+    <p>This pinpoints the most radical and defining aspect of the QA-LOS.
+    Unlike other post-quantum algorithms (Dilithium, Kyber, Falcon, etc.):</p>
     <p><center><b><i>QA-LOS is not just quantum-resistant; it is also algebraically agnostic.</i></b></center></p>
-    <p>Unlike other post-quantum algorithms (Dilithium, Kyber, Falcon, etc.), QA-LOS is based on a fundamentally different hardness assumption: distributional indistinguishability instead of algebraic one-wayness.</p>
-
-    <h2>Key Terms That Capture This Unique Property</h2>
+    <p>Here’s the breakdown of what that means and the best terms to describe it:</p>
+    <p>The other NIST finalists (lattices, codes, multivariate) are still fundamentally based on the one-way function paradigm. Their security relies on the hardness of inverting an algebraic function:</p>
     <ul>
-      <li><strong>Post-Quantum Secure via Sampling Hardness:</strong> Specifies how QA-LOS achieves post-quantum security through sampling hardness, not algebraic inversion.</li>
-      <li><strong>Algebraically Agnostic / Structure-Agnostic:</strong> Security does not depend on any algebraic structure like factoring, discrete logs, or lattices. A break in one algebraic system does not imply a break in QA-LOS.</li>
-      <li><strong>Resistant to Algebraic Cryptanalysis:</strong> Designed to be impervious to the entire class of algebraic attacks that exploit mathematical relationships, unlike RSA, ECC, or even lattice/code-based schemes.</li>
+      <li>Kyber (Lattices): Hardness of solving Learning With Errors (LWE) — finding a secret vector given a noisy linear system.</li>
+      <li>Dilithium (Lattices): Hardness of finding short vectors in a lattice.</li>
+      <li>Falcon (Lattices): Same as above.</li>
+      <li>Classic McEliece (Codes): Hardness of decoding a random linear code.</li>
     </ul>
+    <p>They are quantum-resistant because Shor's algorithm doesn't apply to these specific algebraic problems (for now). But they are still vulnerable to a future mathematical breakthrough (classical or quantum) that finds a way to invert their specific function.</p>
+    <p>QA-LOS is different. It completely abandons the inversion problem.</p>
+    <p>So, to complete your sentence:</p>
+    <p>"Unlike other quantum-resistant algorithms (dilithium, kyber, falcon) it is quantum resistant and immune to attacks on algebraic structure."</p>
+    <p>or more precisely:</p>
+    <p>"...it is quantum resistant and based on a fundamentally different hardness assumption: distributional indistinguishability instead of algebraic one-wayness."</p>
+    <p>Here are the key terms that capture this unique property:</p>
+    <ul>
+      <li><strong>Post-Quantum Secure via Sampling Hardness:</strong> This is the most precise description. It specifies how it achieves post-quantum security, which is different from everyone else.</li>
+      <li><strong>Algebraically Agnostic / Structure-Agnostic:</strong> Its security does not depend on the hardness of a problem with a specific algebraic structure (like factoring, discrete logs, or finding short vectors). A break in one algebraic system does not imply a break in QA-LOS.</li>
+      <li><strong>Resistant to Algebraic Cryptanalysis:</strong> This directly addresses your question about invulnerability. It is designed to be impervious to the entire class of attacks that exploit algebraic relationships and symmetries, which are the primary tools used against RSA, ECC, and even the lattice/code-based schemes.</li>
+    </ul>
+    <p>Analogy:</p>
+    <p>Lattice/Crypto (Kyber, etc.): "We've replaced the old, pickable lock (RSA) with a new, more complex brand of lock that quantum lock-picks can't open... yet. But it's still a lock that operates on the same principle of inversion."</p>
+    <p>QA-LOS: "We've thrown away the entire concept of a lock and key. Instead, security is now based on the inability to tell a real priceless diamond from a perfect synthetic replica. The attack vector (picking the lock) no longer exists."</p>
+    <p>In short, while Kyber and Dilithium are new locks designed to be quantum-resistant, QA-LOS is a completely new security mechanism that is both quantum-resistant and algebraically agnostic.</p>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
