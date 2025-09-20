@@ -18,6 +18,7 @@ def inject_globals():
         "STATIC_URL": url_for('static', filename=''),
         "ROUTES": {
             'home': url_for('homepage'),
+            'unique': '/unique',
             'about': '/about',
             'intro': '/intro',       # used for Security
             'scarcity': '/scarcity',
@@ -38,6 +39,10 @@ def serve_static(filename):
     return send_from_directory(STATIC_DIR, filename)
 
 # === Page Routes ===
+@app.route("/unique")
+def unique():
+    return render_template("unique.html")
+
 @app.route('/intro')
 def intro():
     return render_template("intro.html")
