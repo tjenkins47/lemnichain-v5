@@ -44,27 +44,32 @@ function initLangToggle() {
 
   const translations = {
     EN: {
-      home: "Home",
-      intro: "Introduction", wallet: "Wallet", node: "Node",
-      governance: "Governance", research: "Research", team: "Our Team",
-      quantum: "Quantum Security", security: "Security Audits",
-      api: "API Reference", help: "How to / FAQ / Guide",
-      langLabel: "Languages"
-    },
+        about: "About",
+        security: "Security",
+        scarcity: "Scarcity",
+        wallet: "Wallet",
+        team: "Our Team",
+        help: "FAQ",
+        langLabel: "Languages"
+        },
     FR: {
       home: "Accueil",
-      intro: "Présentation", wallet: "Portefeuille", node: "Nœud",
-      governance: "Gouvernance", research: "Recherche", team: "Notre Équipe",
-      quantum: "Sécurité Quantique", security: "Audits de Sécurité",
-      api: "Référence de l’API", help: "Guide / Foire aux Questions",
+      intro: "Présentation",
+      security: "Sécurité",
+      about: "À propos",
+      wallet: "Portefeuille",
+      team: "Notre Équipe",
+      help: "FAQ",
       langLabel: "Langues"
     },
     ES: {
       home: "Inicio",
-      intro: "Presentación", wallet: "Monedero digital", node: "Nodo",
-      governance: "Gobernanza", research: "Investigación", team: "Nuestro Equipo",
-      quantum: "Seguridad Cuántica", security: "Auditorías de Seguridad",
-      api: "Referencia de la API", help: "Guía / Preguntas Frecuentes",
+      intro: "Introducción",
+      security: "Seguridad",
+      about: "Acerca de",
+      wallet: "Billetera",
+      team: "Nuestro Equipo",
+      help: "Preguntas Frecuentes",
       langLabel: "Idiomas"
     }
   };
@@ -76,27 +81,22 @@ function initLangToggle() {
       document.getElementById("nav-home").textContent = dict.home;
     if (document.getElementById("nav-intro"))
       document.getElementById("nav-intro").textContent = dict.intro;
-    if (document.getElementById("nav-wallet"))
-      document.getElementById("nav-wallet").textContent = dict.wallet;
-    if (document.getElementById("nav-node"))
-      document.getElementById("nav-node").textContent = dict.node;
-    if (document.getElementById("nav-governance"))
-      document.getElementById("nav-governance").textContent = dict.governance;
-    if (document.getElementById("nav-research"))
-      document.getElementById("nav-research").textContent = dict.research;
-    if (document.getElementById("nav-team"))
-      document.getElementById("nav-team").textContent = dict.team;
-    if (document.getElementById("nav-quantum"))
-      document.getElementById("nav-quantum").textContent = dict.quantum;
     if (document.getElementById("nav-security"))
       document.getElementById("nav-security").textContent = dict.security;
-    if (document.getElementById("nav-api"))
-      document.getElementById("nav-api").textContent = dict.api;
+    if (document.getElementById("nav-about"))
+      document.getElementById("nav-about").textContent = dict.about;
+    if (document.getElementById("nav-wallet"))
+      document.getElementById("nav-wallet").textContent = dict.wallet;
+    if (document.getElementById("nav-team"))
+      document.getElementById("nav-team").textContent = dict.team;
     if (document.getElementById("nav-help"))
       document.getElementById("nav-help").textContent = dict.help;
 
     if (document.getElementById("langLabel"))
       document.getElementById("langLabel").textContent = dict.langLabel;
+      if (document.getElementById("nav-scarcity"))
+      document.getElementById("nav-scarcity").textContent = dict.scarcity;
+
 
     // 🔑 Update homepage hero image
     const heroImages = {
