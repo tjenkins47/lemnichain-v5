@@ -1,0 +1,148 @@
+{% import "constants_block.html" as C %}
+<!DOCTYPE html>
+<!-- DEBUG: Rendered by Flask -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uniqueness – LemniChain</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="{{ C.CSS_URL() }}/style.css" />
+  <script defer src="{{ C.JS_URL() }}/main.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('/static/graphics/blue_ocean_background.jpg') center center / cover no-repeat;
+      background-attachment: fixed;
+      color: #222;
+    }
+
+    /* Floating central panel */
+    .unique-panel {
+      max-width: 60%;
+      margin: 5rem auto;
+      background-color: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      padding: 6rem 8rem; /* More margin on sides */
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Dark mode override */
+    body.dark-mode .unique-panel {
+      background-color: rgba(34, 34, 34, 0.9);
+      color: #eee;
+    }
+
+    h1 {
+      font-weight: bold;
+      color: #2c3e50;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+    body.dark-mode h1 {
+      color: #ddd;
+      border-bottom-color: #444;
+    }
+
+    h2 { color: #2C5AA0; margin-top: 20px; }
+    .table th { background: #2C5AA0; color: white; }
+
+    @media (max-width: 768px) {
+      .unique-panel {
+        max-width: 90%;
+        padding: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  {% include "navbar.html" %}
+
+  <main class="unique-panel">
+    <h1>The Patented Lemnichain QA-LOS Cryptography</h1>
+
+    <h2>1. What does "NP" stand for? Is it the same as one-way functions?</h2>
+    <p><strong>NP (Nondeterministic Polynomial time):</strong> This is a fundamental class in computational complexity theory. Informally, it's the class of problems where a proposed solution can be verified quickly (in polynomial time), even if finding that solution might be very hard.</p>
+    <p><em>Example:</em> The Boolean Satisfiability Problem (SAT). Given a complex logical formula, checking if a proposed assignment of TRUE/FALSE to its variables makes the whole formula true is easy. But finding such an assignment from scratch is believed to be very hard for classical computers.</p>
+    <p><strong>Relationship to One-Way Functions (OWFs):</strong> They are not the same, but they are deeply connected.</p>
+    <p>Most practical one-way functions (like those used in RSA and ECC) are based on problems that are believed to be hard (e.g., factoring large numbers), but they reside in the class NP ∩ co-NP. This means both the problem ("find the inverse") and its complement ("this is not the inverse") have efficiently verifiable solutions.</p>
+    <p>The existence of strong, cryptographic one-way functions implies that P ≠ NP. If P equaled NP, it would mean that every problem with an efficiently checkable solution could also be solved efficiently, breaking one-way functions.</p>
+    <p>Quantum computers can break the one-way functions we currently use (factoring, discrete logs) by exploiting their algebraic structure. Shor's algorithm doesn't prove P = NP; it just shows that these specific "hard" NP problems are actually in BQP (meaning a quantum computer can solve them in polynomial time with high probability.).</p>
+
+    <h2>2. What might cause one-way functions to be broken?</h2>
+    <ul>
+      <li><strong>Quantum Computers (The immediate threat):</strong> Algorithms like Shor's algorithm can solve the integer factorization and discrete logarithm problems in polynomial time, completely breaking the one-way functions underlying RSA, ECC, and others.</li>
+      <li><strong>Classical Mathematical Advances:</strong> Even without quantum computers, a breakthrough in mathematics could break a one-way function. For example, a new, incredibly fast factoring algorithm for classical computers would break RSA.</li>
+      <li><strong>Flawed Implementation:</strong> The mathematical problem might be sound, but the way it's implemented in code could introduce vulnerabilities (e.g., side-channel attacks, poor randomness).</li>
+    </ul>
+
+    <h2>3. What do you call a system that doesn't rely on "novel hard" or "one-way" functions?</h2>
+    <p>This is the key innovation of the QA-LOS paper. You wouldn't call it "NP proof" because NP is a massive class containing many easy problems. Instead, you describe it by its security foundation.</p>
+    <p>The correct term, which the paper itself uses, is that QA-LOS is based on Distributional Hardness or Sampling Hardness.</p>
+    <ul>
+      <li><strong>Old Paradigm (Broken by Quantum):</strong> Algebraic One-Wayness. Security relies on the computational difficulty of inverting a function.</li>
+      <li><strong>New Paradigm (QA-LOS):</strong> Distributional Indistinguishability. Security relies on the computational difficulty of distinguishing between two probability distributions.</li>
+    </ul>
+
+    <h2>4. How to refer to a system being invulnerable to these attacks?</h2>
+    <blockquote class="blockquote">
+      <em>Unlike traditional cryptography whose security is based on the one-wayness of algebraic functions vulnerable to Shor's algorithm, the QA-LOS framework derives its security from a Distributional Hardness Conjecture (DHC). Its security relies on the computational infeasibility of distinguishing its lemniscate-orbit sampling output from a uniform random distribution, a problem not known to be susceptible to quantum or classical algebraic attacks.</em>
+    </blockquote>
+
+    <h2>Comparison Table</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered text-center align-middle">
+        <thead>
+          <tr>
+            <th>Traditional Crypto (RSA, ECC)</th>
+            <th>QA-LOS Crypto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Security Basis<br>Algebraic One-Wayness (Inversion Hardness)</td>
+            <td>Distributional Hardness<br>(Indistinguishability)</td>
+          </tr>
+          <tr>
+            <td>Hard Problem<br>"Find the input given the output."</td>
+            <td>"Tell these two sampling processes apart."</td>
+          </tr>
+          <tr>
+            <td>Quantum Threat<br>Broken by Shor's Algorithm</td>
+            <td>Potentially Secure<br>(Relies on a different type of hardness)</td>
+          </tr>
+          <tr>
+            <td>You would call it…<br>Vulnerable to quantum algebraic attacks</td>
+            <td>Immune to attacks on one-way functions;<br>based on sampling hardness</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Analogy</h2>
+    <p><strong>Lattice/Crypto (Kyber, etc.):</strong> "We've replaced the old, pickable lock (RSA) with a new, more complex brand of lock that quantum lock-picks can't open... yet."</p>
+    <p><strong>QA-LOS:</strong> "We've thrown away the entire concept of a lock and key. Instead, security is now based on the inability to tell a real priceless diamond from a perfect synthetic replica. The attack vector (picking the lock) no longer exists."</p>
+
+    <h2>Conclusion</h2>
+    <p><center><b><i>QA-LOS is not just quantum-resistant; it is also algebraically agnostic.</i></b></center></p>
+    <p>Unlike other post-quantum algorithms (Dilithium, Kyber, Falcon, etc.), QA-LOS is based on a fundamentally different hardness assumption: distributional indistinguishability instead of algebraic one-wayness.</p>
+
+    <h2>Key Terms That Capture This Unique Property</h2>
+    <ul>
+      <li><strong>Post-Quantum Secure via Sampling Hardness:</strong> Specifies how QA-LOS achieves post-quantum security through sampling hardness, not algebraic inversion.</li>
+      <li><strong>Algebraically Agnostic / Structure-Agnostic:</strong> Security does not depend on any algebraic structure like factoring, discrete logs, or lattices. A break in one algebraic system does not imply a break in QA-LOS.</li>
+      <li><strong>Resistant to Algebraic Cryptanalysis:</strong> Designed to be impervious to the entire class of algebraic attacks that exploit mathematical relationships, unlike RSA, ECC, or even lattice/code-based schemes.</li>
+    </ul>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
