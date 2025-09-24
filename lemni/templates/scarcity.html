@@ -29,6 +29,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       padding: 3rem 2rem 6rem;
+      overflow: visible; /* ensure scrollbars inside show up */
     }
 
     /* Dark mode override */
@@ -57,16 +58,25 @@
       color: #9abaf5;
     }
 
-    /* Table responsiveness tweaks */
+    /* Responsive tables */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto !important;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .scarcity-panel table {
       width: 100% !important;
       table-layout: auto;
       font-size: 0.9rem; /* compact like intro.html */
     }
-    .table-responsive {
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+
+    /* Mobile fix for background-attachment */
+    @media (max-width: 768px) {
+      body {
+        background-attachment: scroll;
+      }
     }
   </style>
 </head>
