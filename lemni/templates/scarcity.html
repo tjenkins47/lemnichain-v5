@@ -28,7 +28,7 @@
       background-color: rgba(255, 255, 255, 0.92);
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      padding: 3rem 3rem 6rem;
+      padding: 3rem 2rem 6rem;
     }
 
     /* Dark mode override */
@@ -44,7 +44,7 @@
       padding-bottom: 0.5rem;
     }
 
-    /* Centered, bold, blue sub-headings */
+    /* Sub-headings */
     h2.section-heading {
       text-align: left;
       font-weight: bold;
@@ -55,6 +55,18 @@
     }
     body.dark-mode h2.section-heading {
       color: #9abaf5;
+    }
+
+    /* Table responsiveness tweaks */
+    .scarcity-panel table {
+      width: 100% !important;
+      table-layout: auto;
+      font-size: 0.9rem; /* compact like intro.html */
+    }
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
   </style>
 </head>
@@ -74,24 +86,26 @@
       according to the following schedule:
     </p>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Tokens in Circulation (millions)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1 Jan 2026</td><td>3</td></tr>
-        <tr><td>1 Jan 2027</td><td>4</td></tr>
-        <tr><td>1 Jan 2028</td><td>5 (releasing 0.25 million each quarter)</td></tr>
-        <tr><td>1 Jan 2029</td><td>6 (releasing 0.25 million each quarter)</td></tr>
-        <tr><td>1 Jan 2030</td><td>7 (releasing 0.25 million each quarter)</td></tr>
-        <tr><td>1 Jan 2031</td><td>8 (releasing 0.25 million each quarter)</td></tr>
-        <tr><td>1 Jan 2032</td><td>9 (releasing 0.25 million each quarter)</td></tr>
-        <tr><td>1 Jan 2033</td><td>10 (releasing 0.25 million each quarter)</td></tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-striped small">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Tokens in Circulation (millions)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1 Jan 2026</td><td>3</td></tr>
+          <tr><td>1 Jan 2027</td><td>4</td></tr>
+          <tr><td>1 Jan 2028</td><td>5 (releasing 0.25 million each quarter)</td></tr>
+          <tr><td>1 Jan 2029</td><td>6 (releasing 0.25 million each quarter)</td></tr>
+          <tr><td>1 Jan 2030</td><td>7 (releasing 0.25 million each quarter)</td></tr>
+          <tr><td>1 Jan 2031</td><td>8 (releasing 0.25 million each quarter)</td></tr>
+          <tr><td>1 Jan 2032</td><td>9 (releasing 0.25 million each quarter)</td></tr>
+          <tr><td>1 Jan 2033</td><td>10 (releasing 0.25 million each quarter)</td></tr>
+        </tbody>
+      </table>
+    </div>
 
     <p>
       Beginning 1 Jan 2028, 250,000 coins will be released into circulation at the beginning of each quarter
@@ -107,54 +121,56 @@
     <p><strong>Max Supply:</strong> Capped at 10,000,000 LEMNI.</p>
     <p><strong>Fully Diluted Valuation (FDV):</strong> The total value of all 10 million coins if they were in circulation.</p>
 
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Allocation</th>
-          <th># of Tokens</th>
-          <th>% of Supply</th>
-          <th>Key Terms</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Founder (IP/Patent)</td>
-          <td>70%</td>
-          <td>7,000,000</td>
-          <td>70%</td>
-          <td>6-year linear vesting with a 1-year cliff</td>
-        </tr>
-        <tr>
-          <td>Airdrop & Ecosystem</td>
-          <td>7.5%</td>
-          <td>750,000</td>
-          <td>7.5%</td>
-          <td>Randomized lockups (3, 6, 12 months). Community incentives</td>
-        </tr>
-        <tr>
-          <td>Treasury & Liquidity</td>
-          <td>12.5%</td>
-          <td>1,250,000</td>
-          <td>12.5%</td>
-          <td>For liquidity pools (locked 2+ years), future development</td>
-        </tr>
-        <tr>
-          <td>Genesis Auction</td>
-          <td>10%</td>
-          <td>1,000,000</td>
-          <td>10%</td>
-          <td>Sealed bid. Unsold tokens are automatically burned</td>
-        </tr>
-        <tr>
-          <td><strong>Total</strong></td>
-          <td>100%</td>
-          <td>10,000,000</td>
-          <td>100%</td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-bordered small">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Allocation</th>
+            <th># of Tokens</th>
+            <th>% of Supply</th>
+            <th>Key Terms</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Founder (IP/Patent)</td>
+            <td>70%</td>
+            <td>7,000,000</td>
+            <td>70%</td>
+            <td>6-year linear vesting with a 1-year cliff</td>
+          </tr>
+          <tr>
+            <td>Airdrop & Ecosystem</td>
+            <td>7.5%</td>
+            <td>750,000</td>
+            <td>7.5%</td>
+            <td>Randomized lockups (3, 6, 12 months). Community incentives</td>
+          </tr>
+          <tr>
+            <td>Treasury & Liquidity</td>
+            <td>12.5%</td>
+            <td>1,250,000</td>
+            <td>12.5%</td>
+            <td>For liquidity pools (locked 2+ years), future development</td>
+          </tr>
+          <tr>
+            <td>Genesis Auction</td>
+            <td>10%</td>
+            <td>1,000,000</td>
+            <td>10%</td>
+            <td>Sealed bid. Unsold tokens are automatically burned</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td>100%</td>
+            <td>10,000,000</td>
+            <td>100%</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <h2 class="section-heading">4. Detailed Vesting Schedule</h2>
     <p><strong>Founder Vesting (7,000,000 LEMNI):</strong> Cliff until Jan 1, 2027. Vesting continues linearly per block over 5 years, ending Jan 1, 2032.</p>
