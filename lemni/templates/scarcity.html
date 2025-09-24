@@ -28,7 +28,7 @@
       background-color: rgba(255, 255, 255, 0.92);
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
+      padding: 3rem 3rem 6rem;
     }
 
     /* Dark mode override */
@@ -41,11 +41,20 @@
       font-weight: bold;
       color: #2c3e50;
       border-bottom: 2px solid #eee;
-      padding-bottom: 0.25rem;
+      padding-bottom: 0.5rem;
     }
-    body.dark-mode h1 {
-      color: #ddd;
-      border-bottom-color: #444;
+
+    /* Centered, bold, blue sub-headings */
+    h2.section-heading {
+      text-align: left;
+      font-weight: bold;
+      color: #2C5AA0;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+    body.dark-mode h2.section-heading {
+      color: #9abaf5;
     }
   </style>
 </head>
@@ -53,23 +62,126 @@
   {% include "navbar.html" %}
 
   <main class="scarcity-panel">
-    <h1>Scarcity</h1>
+    <h1>Lemnicoin (LEMNI) Tokenomics Plan</h1>
+
+    <h2 class="section-heading">1. Token Release Schedule</h2>
     <p>
-      This is a placeholder page for the <strong>Scarcity</strong> section of LemniChain.
-      Content will be added here to explain the role of token scarcity, economics,
-      and sustainability within the LemniCoin ecosystem.
+      The theme of Lemnicoin is one of both security and scarcity. Lemnicoin is a "scarce" coin,
+      with a very small number of coins in circulation compared to other cryptocoins.
+    </p>
+    <p>
+      A maximum of 10 million tokens shall be minted, and time-locked to be placed into circulation
+      according to the following schedule:
     </p>
 
-    <hr class="my-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Tokens in Circulation (millions)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1 Jan 2026</td><td>3</td></tr>
+        <tr><td>1 Jan 2027</td><td>4</td></tr>
+        <tr><td>1 Jan 2028</td><td>5 (releasing 0.25 million each quarter)</td></tr>
+        <tr><td>1 Jan 2029</td><td>6 (releasing 0.25 million each quarter)</td></tr>
+        <tr><td>1 Jan 2030</td><td>7 (releasing 0.25 million each quarter)</td></tr>
+        <tr><td>1 Jan 2031</td><td>8 (releasing 0.25 million each quarter)</td></tr>
+        <tr><td>1 Jan 2032</td><td>9 (releasing 0.25 million each quarter)</td></tr>
+        <tr><td>1 Jan 2033</td><td>10 (releasing 0.25 million each quarter)</td></tr>
+      </tbody>
+    </table>
 
-    <p>Future content will describe:</p>
-    <ul>
-      <li>The total supply of LEMNI tokens</li>
-      <li>Staking and burning mechanisms</li>
-      <li>How scarcity contributes to long-term value</li>
-    </ul>
+    <p>
+      Beginning 1 Jan 2028, 250,000 coins will be released into circulation at the beginning of each quarter
+      (thus the tokens in circulation for a given year are not all released on 1 Jan of that year,
+      but 0.25 on 1 Jan, 0.25 on 1 Mar, 0.25 on 1 Jul, and 0.25 on 1 Oct).
+    </p>
 
-    <p class="text-muted mt-5">Placeholder content — page under construction.</p>
+    <h2 class="section-heading">2. Foundational Narrative & Value Proposition</h2>
+    <p><strong>The Asset:</strong> Lemnicoin is not just a currency; it is the digital representation of access rights and value accrual for the proprietary technology outlined in patent 63/788,247.</p>
+    <p><strong>The Story:</strong> The founder's groundbreaking IP is the sole reason for Lemnicoin's existence. The tokenomics are designed to fairly compensate the founder for this foundational contribution while aligning their incentives with the long-term success of the project and all its holders.</p>
+
+    <h2 class="section-heading">3. Total Supply & Distribution Summary</h2>
+    <p><strong>Max Supply:</strong> Capped at 10,000,000 LEMNI.</p>
+    <p><strong>Fully Diluted Valuation (FDV):</strong> The total value of all 10 million coins if they were in circulation.</p>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Allocation</th>
+          <th># of Tokens</th>
+          <th>% of Supply</th>
+          <th>Key Terms</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Founder (IP/Patent)</td>
+          <td>70%</td>
+          <td>7,000,000</td>
+          <td>70%</td>
+          <td>6-year linear vesting with a 1-year cliff</td>
+        </tr>
+        <tr>
+          <td>Airdrop & Ecosystem</td>
+          <td>7.5%</td>
+          <td>750,000</td>
+          <td>7.5%</td>
+          <td>Randomized lockups (3, 6, 12 months). Community incentives</td>
+        </tr>
+        <tr>
+          <td>Treasury & Liquidity</td>
+          <td>12.5%</td>
+          <td>1,250,000</td>
+          <td>12.5%</td>
+          <td>For liquidity pools (locked 2+ years), future development</td>
+        </tr>
+        <tr>
+          <td>Genesis Auction</td>
+          <td>10%</td>
+          <td>1,000,000</td>
+          <td>10%</td>
+          <td>Sealed bid. Unsold tokens are automatically burned</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td>100%</td>
+          <td>10,000,000</td>
+          <td>100%</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-heading">4. Detailed Vesting Schedule</h2>
+    <p><strong>Founder Vesting (7,000,000 LEMNI):</strong> Cliff until Jan 1, 2027. Vesting continues linearly per block over 5 years, ending Jan 1, 2032.</p>
+    <p><strong>Airdrop Vesting (700,000 LEMNI):</strong> Distributed among developers, early contributors, friends, and family. Unlocks 1/3 after 3 months, 1/3 after 6 months, 1/3 after 12 months.</p>
+    <p><strong>Treasury & Liquidity (1,300,000 LEMNI):</strong> Used for liquidity pools (locked 2+ years), remainder managed by multi-sig wallet.</p>
+
+    <h2 class="section-heading">5. The Genesis Auction: A Strategic Value Discovery Event</h2>
+    <p>Sealed-bid auction for 1,000,000 LEMNI to establish an initial market price and acquire strategic partners. Any unsold tokens are burned.</p>
+
+    <h2 class="section-heading">6. Justification of Founder Allocation (70%)</h2>
+    <p>The project is built on patent 63/788,247. Founder receives 70% of supply, subject to 6-year vesting schedule. Founder’s success is aligned with long-term network value growth.</p>
+
+    <h2 class="section-heading">7. Initial Circulating Supply Calculation</h2>
+    <p>
+      At Mainnet Launch (Jan 1, 2026):<br>
+      Genesis Auction ~1,000,000 LEMNI<br>
+      Treasury (Liquidity Pool) ~1,300,000 LEMNI<br>
+      Airdrop ~700,000 LEMNI<br>
+      Founder: 0 LEMNI<br>
+      <strong>Initial Circulating Supply: ~3,000,000 LEMNI</strong>
+    </p>
+
+    <h2 class="section-heading">Assessment</h2>
+    <p>
+      The plan is realistic and effective for the Genesis Auction. Key strengths include transparency,
+      long-term commitment, deflationary auction mechanics, and a market-friendly design.
+    </p>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
