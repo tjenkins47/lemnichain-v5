@@ -1,22 +1,49 @@
-<!-- navbar_root.html -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">LemniChain</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- Bootstrap Navbar (navbar_root.html with Language Label + Toggle, no inline script) -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow-sm">
+  <a class="navbar-brand fw-bold" href="/">LemniChain</a>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <!-- navbar_root<li class="nav-item"><a class="nav-link" id="nav-about" href="/unique">Uniqueness</a></li> -->
-        <li class="nav-item"><a class="nav-link" id="nav-about" href="/about">About</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav-security" href="/intro">Security</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav-scarcity" href="/scarcity">Scarcity</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav-wallet" href="/wallet">Wallet</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav-team" href="/team">Our Team</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav-help" href="/help">FAQ</a></li>
-      </ul>
-    </div>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarMain">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link" id="nav-intro" href="/intro">Introduction</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="nav-wallet" href="/wallet">Wallet</a>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="nav-research" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Research
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="nav-research">
+          <li><a class="dropdown-item" id="nav-team" href="/team">Our Team</a></li>
+          <li><a class="dropdown-item" id="nav-quantum" href="/quantum">Quantum Security</a></li>
+          <li><a class="dropdown-item" id="nav-security" href="/security">Security Audits</a></li>
+          <li><a class="dropdown-item" id="nav-api" href="/api">API Reference</a></li>
+          <li><a class="dropdown-item" id="nav-help" href="/help">How to / FAQ / Guide</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Language Label + Toggle -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <span class="nav-link" id="langLabel">Languages</span>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="langToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          EN
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="langToggle">
+          <li><a class="dropdown-item lang-option" href="#" data-lang="EN">EN</a></li>
+          <li><a class="dropdown-item lang-option" href="#" data-lang="FR">FR</a></li>
+          <li><a class="dropdown-item lang-option" href="#" data-lang="ES">ES</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </nav>
